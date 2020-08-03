@@ -1,9 +1,44 @@
-.searchBox{
-  width: 60%;
-  margin: 50px auto;
+*{
+  margin: 0;
+  padding: 0;
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.searchBox {
+  width: 75%;
+  margin: auto;
+}
+
+.data-content {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 20% 20% 20% 20%;
+  justify-content: space-evenly;
+  width: 80%;
+  row-gap: 50px;
+  
+}
+
+
+
+.cardplace {
+  -webkit-box-shadow: 10px 9px 23px 1px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 10px 9px 23px 1px rgba(0, 0, 0, 0.12);
+  box-shadow: 10px 9px 23px 1px rgba(0, 0, 0, 0.12);
+
+  
+}
+
+
+.cardbody{
+  height: 14rem;
+}
+.card-text{
+  list-style: none;
 }

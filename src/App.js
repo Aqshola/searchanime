@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import './App.css';
 import SearchBox from './search';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CardCom from './card';
+import CardList from './cardlist';
 
 class App extends Component {
 
@@ -10,8 +10,7 @@ class App extends Component {
     super();
     this.state={
         input:'',
-        data:'',
-            
+        data:[],
     }
   }
   searchChange=(e)=>{
@@ -21,19 +20,17 @@ class App extends Component {
     fetch(`https://api.jikan.moe/v3/search/anime?q=${this.state.input}&page=1`).then(res => res.json())
       .then(el => 
         this.setState({
-          data: el.results[1]
+          data: el.results
         }))
-    console.log(this.state.data)
   }
   render(){
     return(
       <div className="content">
+      <h1 className="mx-auto mt-5">ANIME</h1>
         <div className="searchBox">
           <SearchBox change={this.searchChange} click={this.searchClick} />
         </div>
-        <div>
-          <CardCom data={this.state.data}/>
-        </div>
+        <CardList data = {this.state.data}/>
       </div>
     )
   }
