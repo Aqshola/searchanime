@@ -26,7 +26,7 @@ class App extends Component {
   render(){
     return(
       <div className="content">
-      <h1 className="mx-auto mt-5">ANIME</h1>
+      <h1 className="mx-auto mt-5">Manganime</h1>
         <div className="searchBox">
           <SearchBox change={this.searchChange} click={this.searchClick} />
         </div>
