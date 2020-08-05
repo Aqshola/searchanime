@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CardList from './cardlist';
 import Choose from './switch'
 import Axios from 'axios';
+import PaginationBasic from './pagenation';
 
 class App extends Component {
 
@@ -44,6 +45,7 @@ class App extends Component {
           <Choose clicked={this.chooseSearch} />
         </div>
         <CardList info={this.state.info}data = {this.state.data}/>
+        <PaginationBasic/>
       </div>
     )
   }
