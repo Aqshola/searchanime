@@ -14,27 +14,37 @@ class App extends Component {
     this.state={
         input:'',
         data:[],
-        info:"Anime"
+        info:"Anime",
+        postPerPage:10,
+        currentPage:1
     }
   }
   searchChange=(e)=>{
     this.setState({input: e.target.value})
   }
   searchClick=()=>{
-    // fetch(`https://api.jikan.moe/v3/search/${this.state.info.toLowerCase()}?q=${this.state.input}&page=1`).then(res => res.json())
-    //   .then(el => 
-    //     this.setState({
-    //       data: el.results
-    //     }))
-
     Axios.get(`https://api.jikan.moe/v3/search/${this.state.info.toLowerCase()}?q=${this.state.input}&page=1`)
           .then(el => 
             this.setState({
-              data: el.data.results
+              data: el.data.results,
+              currentPage:1
             }))
+    
+
   }
   chooseSearch=(e)=>{
     this.setState({info:e.target.innerHTML})
+  }
+  filterPost=()=>{
+    const indexOfLastPost = this.state.currentPage * this.state.postPerPage;
+    const indexOfFirstPost = indexOfLastPost - this.state.postPerPage;
+    
+    let postperPage= []
+    postperPage = this.state.data.slice(indexOfFirstPost, indexOfLastPost);
+    return postperPage;
+  }
+  switchPage=(e)=>{
+    this.setState({currentPage:e.target.innerHTML})
   }
   render(){
     return(
@@ -44,8 +54,13 @@ class App extends Component {
           <SearchBox info={this.state.info} change={this.searchChange} click={this.searchClick} />
           <Choose clicked={this.chooseSearch} />
         </div>
-        <CardList info={this.state.info}data = {this.state.data}/>
-        <PaginationBasic/>
+        <CardList info={this.state.info}data = {this.filterPost()}/>
+        <PaginationBasic 
+          postPerPage={this.state.postPerPage}
+          totalPost={this.state.data.length}
+          paginate={this.switchPage}
+          page={this.state.currentPage}
+        />
       </div>
     )
   }
