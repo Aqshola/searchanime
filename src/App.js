@@ -4,6 +4,8 @@ import SearchBox from './search';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CardList from './cardlist';
 import Choose from './switch'
+import Axios from 'axios';
+
 class App extends Component {
 
   constructor(){
@@ -18,11 +20,17 @@ class App extends Component {
     this.setState({input: e.target.value})
   }
   searchClick=()=>{
-    fetch(`https://api.jikan.moe/v3/search/${this.state.info.toLowerCase()}?q=${this.state.input}&page=1`).then(res => res.json())
-      .then(el => 
-        this.setState({
-          data: el.results
-        }))
+    // fetch(`https://api.jikan.moe/v3/search/${this.state.info.toLowerCase()}?q=${this.state.input}&page=1`).then(res => res.json())
+    //   .then(el => 
+    //     this.setState({
+    //       data: el.results
+    //     }))
+
+    Axios.get(`https://api.jikan.moe/v3/search/${this.state.info.toLowerCase()}?q=${this.state.input}&page=1`)
+          .then(el => 
+            this.setState({
+              data: el.data.results
+            }))
   }
   chooseSearch=(e)=>{
     this.setState({info:e.target.innerHTML})

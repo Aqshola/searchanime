@@ -59,6 +59,8 @@
   display: flex;
   height: min-content;
 }
+
+
 .choose-grp button:focus{
   box-shadow: none !important;
 }
