@@ -8,16 +8,17 @@ class CardCom extends Component{
         super()
         this.state={
             show:false,
-            dataDetail:''
+            dataDetail:'',
+            loading:false
         }
     }
 
     showModal=()=>{
-        this.setState({show:true})
+        this.setState({show:true,loading:true,})
         fetch(`https://api.jikan.moe/v3/${this.props.info.toLowerCase()}/${this.props.data.mal_id}`)
         .then(res=>res.json())
         .then(el=>{
-            this.setState({dataDetail:el})})
+            this.setState({dataDetail:el,loading:false})})
     }
     closeModal=()=>{
         this.setState({show:false})
@@ -41,7 +42,7 @@ class CardCom extends Component{
                         <Button onClick={this.showModal}>Detail</Button>
                     </div>
                     
-                    <Modals show={this.state.show} hide={this.closeModal} data={this.state.dataDetail}/>
+                    <Modals loading={this.state.loading} show={this.state.show} hide={this.closeModal} data={this.state.dataDetail}/>
                 </div>
             </div>
         );

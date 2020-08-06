@@ -2,8 +2,11 @@ import React from 'react';
 import CardCom from './card'
 
 
-const CardList = ({ info, data, click, }) => {
+const CardList = ({loading, info, data, click, }) => {
     try {
+        if(loading){
+            return <h2 className="mx-auto">Loading...</h2>
+        }
         return (
             <div className="data-content mx-auto ">{
                 data.map((el, i) => {

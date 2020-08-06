@@ -16,18 +16,21 @@ class App extends Component {
         data:[],
         info:"Anime",
         postPerPage:10,
-        currentPage:1
+        currentPage:1,
+        loading:false,
     }
   }
   searchChange=(e)=>{
     this.setState({input: e.target.value})
   }
   searchClick=()=>{
+    this.setState({loading:true})
     Axios.get(`https://api.jikan.moe/v3/search/${this.state.info.toLowerCase()}?q=${this.state.input}&page=1`)
           .then(el => 
             this.setState({
               data: el.data.results,
-              currentPage:1
+              currentPage:1,
+              loading:false,
             }))
     
 
@@ -54,7 +57,7 @@ class App extends Component {
           <SearchBox info={this.state.info} change={this.searchChange} click={this.searchClick} />
           <Choose clicked={this.chooseSearch} />
         </div>
-        <CardList info={this.state.info}data = {this.filterPost()}/>
+        <CardList loading={this.state.loading} info={this.state.info}data = {this.filterPost()}/>
         <PaginationBasic 
           postPerPage={this.state.postPerPage}
           totalPost={this.state.data.length}

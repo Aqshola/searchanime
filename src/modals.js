@@ -6,6 +6,19 @@ import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 
 class Modals extends Component {
     render(){
+        if(this.props.loading){
+            return(<Modal show={this.props.show} >
+                <ModalHeader>
+                    <h2>Details</h2>
+                </ModalHeader>
+                <ModalBody>
+                    <h4>Loading...</h4>
+                </ModalBody>
+                <ModalFooter>
+                    <Button onClick={this.props.hide}>close</Button>
+                </ModalFooter>
+            </Modal>)
+        }
         return(
             <Modal show={this.props.show} >
                 <ModalHeader>
