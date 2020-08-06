@@ -47,7 +47,9 @@ class CardCom extends Component {
             </p>
           </div>
           <div div className="card-btn">
-            <Button onClick={this.showModal}>Detail</Button>
+            <Button variant="primary" onClick={this.showModal}>
+              Detail
+            </Button>
           </div>
 
           <Modals

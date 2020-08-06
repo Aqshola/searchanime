@@ -7,7 +7,7 @@ class Modals extends Component {
     const { loading, show, hide, data } = this.props
     if (loading) {
       return (
-        <Modal show={show}>
+        <Modal show={show} centered>
           <ModalHeader>
             <h2>Details</h2>
           </ModalHeader>
@@ -26,7 +26,7 @@ class Modals extends Component {
           <h2>Details</h2>
         </ModalHeader>
         <ModalBody>
-          <p>{data.synopsis}</p>
+          <p className="modal-desc">{data.synopsis}</p>
         </ModalBody>
         <ModalFooter>
           <Button onClick={hide}>close</Button>

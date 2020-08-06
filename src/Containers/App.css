@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -7,47 +7,55 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 }
 
-.error{
+.error {
   margin-top: 50%;
 }
+
 .searchBox {
-  width: 55%;
+  width: 90%;
   margin: auto;
-  
 }
-.btn{
+
+.btn {
   background-color: cornflowerblue;
 }
 
 .data-content {
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: 20% 20% 20% 20%;
   justify-content: space-evenly;
   width: 85%;
-  row-gap: 50px;
-  
+  row-gap: 20px;
 }
+
 .cardplace {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 50% 50%;
   padding: 10px;
   border-radius: 20px;
   background: #ffffff;
-  box-shadow: 29px 29px 45px #d9d9d9,  -29px -29px 45px #ffffff;
+  box-shadow: 29px 29px 45px #d9d9d9, -29px -29px 45px #ffffff;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+  column-gap: 10px;
 }
-.card-img{
+
+.card-desc {
+  padding: 10px;
+}
+
+.card-img {
   display: flex;
   height: 250px;
+  background-color: yellowgreen;
 }
-.card-img img{
+
+.card-img img {
   width: 100%;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -55,20 +63,48 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-.card-title{
-  height: 5
-  0px;
+
+.card-title {
+  --max-lines: 2;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 40px;
 }
-.card-btn{
+
+.card-title h6 {
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.card-btn {
   display: flex;
   height: min-content;
 }
 
-
-.choose-grp button:focus{
-  box-shadow: none !important;
-  border-bottom: blue 2px;
+.modal-desc {
+  overflow: scroll;
+  height: 300px;
 }
-.active:active{
-  border-bottom: blue 2px;
+
+.choose-grp button:focus {
+  box-shadow: none !important;
+}
+
+@media screen and (min-device-width: 1200px) and (-webkit-min-device-pixel-ratio: 1) {
+  .data-content {
+    grid-template-columns: 20% 20% 20% 20%;
+  }
+  .cardplace {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0;
+  }
+  .card-img img {
+    width: 100%;
+  }
+  .searchBox {
+    width: 55%;
+    margin: auto;
+  }
 }
