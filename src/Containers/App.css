@@ -34,14 +34,12 @@
 .cardplace {
   display: grid;
   grid-template-columns: 50% 50%;
-  padding: 10px;
+
   border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 29px 29px 45px #d9d9d9, -29px -29px 45px #ffffff;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  /* background: #ffffff; */
+  -webkit-box-shadow: 18px 17px 36px -26px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 18px 17px 36px -26px rgba(0, 0, 0, 0.34);
+  box-shadow: 18px 17px 36px -26px rgba(0, 0, 0, 0.34);
   column-gap: 10px;
 }
 
