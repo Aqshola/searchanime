@@ -7,7 +7,7 @@ const PaginationBasic = ({ postPerPage, totalPost, paginate, page }) => {
     pageNumbers.push(i)
   }
   return (
-    <div className="mx-auto">
+    <div className="mx-auto page">
       <Pagination size="md">
         {pageNumbers.map((number) => {
           return (

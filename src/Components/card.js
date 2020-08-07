@@ -27,11 +27,9 @@ class CardCom extends Component {
   closeModal = () => {
     this.setState({ show: false })
   }
-
   render() {
     const { image_url, title, type } = this.props.data
     const { show, dataDetail, loading } = this.state
-
     return (
       <div className="cardplace">
         <div className="card-img">
